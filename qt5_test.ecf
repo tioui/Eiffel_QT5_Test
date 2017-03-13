@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-16-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-16-0 http://www.eiffel.com/developers/xml/configuration-1-16-0.xsd" name="qt5_test" uuid="BBF48119-B6AC-40BE-BECD-EADA21673E43">
+	<target name="qt5_test">
+		<root class="APPLICATION" feature="make"/>
+		<file_rule>
+			<exclude>/EIFGENs$</exclude>
+			<exclude>/Clib$</exclude>
+			<exclude>/spec$</exclude>
+		</file_rule>
+		<option warning="true">
+			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
+		</option>
+		<setting name="console_application" value="true"/>
+		<capability>
+			<concurrency support="none"/>
+		</capability>
+		<external_cflag value="`pkg-config --cflags Qt5Core`"/>
+		<external_cflag value="-fpermissive"/>
+		<external_cflag value="-w"/>
+		<external_cflag value="`pkg-config --cflags Qt5Widgets`"/>
+		<external_object location="/home/louis/qt5_test/spec/linux-x86-64/lib/eiffel_qt5_event_filter.o">
+			<condition>
+				<concurrency value="none"/>
+			</condition>
+		</external_object>
+		<external_object location="/home/louis/qt5_test/spec/linux-x86-64/lib/MTeiffel_qt5_event_filter.o">
+			<condition>
+				<concurrency excluded_value="none"/>
+			</condition>
+		</external_object>
+		<external_linker_flag value="`pkg-config --libs Qt5Core`"/>
+		<external_linker_flag value="`pkg-config --libs Qt5Widgets`"/>
+		<precompile name="base_pre" location="$ISE_PRECOMP\base-safe.ecf"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<cluster name="qt5_test" location=".\" recursive="true">
+			<visible class="QT5_CORE_APPLICATION" feature="manage_event_filter"/>
+			<visible class="QT5_GUI_APPLICATION" feature="manage_event_filter"/>
+			<visible class="QT5_APPLICATION" feature="manage_event_filter"/>
+		</cluster>
+	</target>
+</system>
